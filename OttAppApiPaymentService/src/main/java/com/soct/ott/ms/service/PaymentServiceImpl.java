@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +29,8 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public PaymentEntity save(int userId) {
+	@Transactional
+	public PaymentEntity save(String userId) {
 		PaymentEntity entity = new PaymentEntity();
 		int randId = this.getRandomNumber(1, 4);
 		SubscriptionEntity subscription = subscriptionRepository.findById(Long.valueOf(randId)).orElse(null);

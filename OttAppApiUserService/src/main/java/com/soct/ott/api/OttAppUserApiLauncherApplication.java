@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
-import com.soct.ott.api.message.channel.UserRegistrationSource;
+import com.soct.ott.api.message.channel.UserServiceBinding;
 
 @SpringBootApplication
 //@EnableDiscoveryClient
 //@EnableFeignClients
-@EnableBinding(UserRegistrationSource.class)
+@EnableBinding(UserServiceBinding.class)
 public class OttAppUserApiLauncherApplication {
 
 	public static void main(String[] args) {

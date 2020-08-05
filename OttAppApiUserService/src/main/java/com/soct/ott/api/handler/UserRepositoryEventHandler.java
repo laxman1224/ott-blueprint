@@ -1,5 +1,8 @@
 package com.soct.ott.api.handler;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.annotation.HandleAfterCreate;
 import org.springframework.data.rest.core.annotation.HandleAfterSave;
@@ -9,13 +12,16 @@ import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 import org.springframework.integration.support.MessageBuilder;
 
 import com.soct.ott.api.entities.User;
-import com.soct.ott.api.message.channel.UserRegistrationSource;
+import com.soct.ott.api.message.channel.UserServiceBinding;
 
 @RepositoryEventHandler
 public class UserRepositoryEventHandler {
 
 	@Autowired
-	UserRegistrationSource userRegistrationSource;
+	UserServiceBinding userRegistrationSource;
+	
+	@Autowired
+	EntityManager entityManager;
 
 	@HandleBeforeCreate
 	public void handlePaymentBeforeCreate(User user) {
@@ -28,8 +34,10 @@ public class UserRepositoryEventHandler {
 	}
 
 	@HandleAfterCreate
+	@Transactional
 	public void handlePaymentAfterCreate(User user) {
-		userRegistrationSource.userRegistration().send(MessageBuilder.withPayload(user).build());
+		entityManager.flush();
+		userRegistrationSource.userRegistration().send(MessageBuilder.withPayload(user.getId()).build());
 		System.out.println("@HandleAfterCreate");
 	}
 

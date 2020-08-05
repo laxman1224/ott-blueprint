@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.soct.ott.ms.entities.PaymentEntity;
-import com.soct.ott.ms.entities.SubscriptionEntity;
 import com.soct.ott.ms.service.PaymentService;
 
 @RestController
@@ -32,7 +31,7 @@ public class PaymentController {
 	}
 	
 	@PostMapping
-    public PaymentEntity savePayment(@PathVariable int id) {
+    public PaymentEntity savePayment(@PathVariable String id) {
         return paymentService.save(id);
     }
 	

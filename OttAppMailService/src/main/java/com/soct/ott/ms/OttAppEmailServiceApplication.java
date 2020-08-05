@@ -2,13 +2,13 @@ package com.soct.ott.ms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
-public class OttAppApiPaymentServiceApplication {
+public class OttAppEmailServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OttAppApiPaymentServiceApplication.class, args);
+		SpringApplication.run(OttAppEmailServiceApplication.class, args);
 	}
 
 }
+

@@ -1,7 +1,6 @@
 package com.soct.ott.ms.entities;
 
 import java.util.Date;
-import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,7 +19,7 @@ public class PaymentEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private int userId;
+	private String userId;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "sub_id", referencedColumnName = "id")
@@ -36,11 +35,11 @@ public class PaymentEntity {
 		this.id = id;
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

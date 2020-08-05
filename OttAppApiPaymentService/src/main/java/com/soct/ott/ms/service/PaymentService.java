@@ -9,7 +9,7 @@ public interface PaymentService {
 
 	List<PaymentEntity> getPayments(String userId);
 	
-	PaymentEntity save(int userId);
+	PaymentEntity save(String userId);
 	
 	List<SubscriptionEntity> getSubscriptions();
 }
